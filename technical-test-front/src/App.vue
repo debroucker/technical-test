@@ -1,17 +1,40 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <ListOfArticlesComponent :all-articles="allArticles "/>
 </template>
 
-<script>
-import HelloWorld from './components/HelloWorld.vue'
+<script lang="ts">
+import { defineComponent } from "vue";
+import ArticleService from "./services/ArticleService";
+import Article from "./types/Article";
+import ResponseData from "./types/ResponseData";
+import ListOfArticlesComponent from "./components/ListOfArticlesComponent.vue";
 
-export default {
-  name: 'App',
+export default defineComponent ({
+  name: "App",
+  data() {
+    return {
+      allArticles: [] as Article[]
+    };
+  },
   components: {
-    HelloWorld
+    ListOfArticlesComponent
+  },
+  methods: {
+    getAll() {
+      ArticleService.getAll()
+        .then((response: ResponseData) => {
+          this.allArticles = response.data;
+          console.log(response.data);
+        })
+        .catch((e: Error) => {
+          console.log(e);
+        });
+    }
+  },
+  mounted() {
+    this.getAll();
   }
-}
+})
 </script>
 
 <style>
