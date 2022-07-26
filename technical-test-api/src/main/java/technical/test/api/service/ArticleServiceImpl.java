@@ -6,6 +6,7 @@ import technical.test.api.entity.Article;
 import technical.test.api.repository.ArticleRepository;
 
 import java.util.List;
+import java.util.UUID;
 
 @Service
 public class ArticleServiceImpl implements ArticleService {
@@ -15,6 +16,9 @@ public class ArticleServiceImpl implements ArticleService {
 
     @Override
     public Article save(Article article) {
+        if (article.getId() == null) { //mongo cannot set uuid auto
+            article.setId(UUID.randomUUID());
+        }
         return articleRepository.save(article);
     }
 
