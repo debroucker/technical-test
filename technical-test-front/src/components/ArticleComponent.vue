@@ -1,8 +1,10 @@
 <template>
-  <td> {{ article.id }}</td>
-  <td> {{ article.name }}</td>
-  <td> {{ article.description }}</td>
-  <td> {{ article.price }}</td>
+  <tr>
+    <td> {{ article.id }}</td>
+    <td> {{ article.name }}</td>
+    <td> {{ article.description }}</td>
+    <td> {{ article.price }}</td>
+  </tr>
 </template>
 
 <script lang="ts">

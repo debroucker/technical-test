@@ -1,5 +1,5 @@
 <template>
-  <ListOfArticlesComponent :all-articles="allArticles "/>
+  <ListOfArticlesComponent :all-articles="allArticles" />
 </template>
 
 <script lang="ts">
@@ -24,7 +24,6 @@ export default defineComponent ({
       ArticleService.getAll()
         .then((response: ResponseData) => {
           this.allArticles = response.data;
-          console.log(response.data);
         })
         .catch((e: Error) => {
           console.log(e);

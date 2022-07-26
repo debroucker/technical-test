@@ -9,9 +9,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr v-for="article in allArticles" v-bind:key="article.id">
-        <ArticleComponent :article="article" />
-      </tr>
+        <ArticleComponent  v-for="article in allArticles" v-bind:key="article.id" :article="article" />
     </tbody>
   </table>
 </template>
@@ -26,7 +24,7 @@ export default  defineComponent ({
     ArticleComponent
   },
   props: {
-    allArticles: { type: [Object], required: true}
+    allArticles: { type: [], required: true}
   }
 })
 </script>
